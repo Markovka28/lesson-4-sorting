@@ -2,9 +2,30 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-
-
     <title>СОРТИРОВКА</title>
+
+<script>
+var numbers = [3,7,1,5,4,9];
+//alert(arr);
+document.write(numbers);
+var size = numbers.length;
+for (var current = 0; current<size; current++){ //пока current < size выполяем все действия внутри цикла
+var position = current;
+for (var i = current; i < size; i++) { //index i будет меняться ровно как меняетс current ()
+    if (numbers[i]>numbers[position]) {
+    position = i;
+    }
+}
+var temp = numbers[current]; // в темп положим рабочий элемент numbers[current];  
+numbers[current] = numbers[position]; // на позицию current положим тот что мы нашли - position
+numbers[position] = temp; // на position положить то что было в current т.е. поменять два элемента местами
+
+document.write("<br>" + numbers); // псевдопереход на новую строку
+
+}
+
+</script>
+
 </head>
 <body>
     
