@@ -5,13 +5,30 @@
     <title>СОРТИРОВКА</title>
 
 <script>
-var numbers = [3,7,1,5,4,9];
+function getRandom(n) { //ЭТА ФУНКЦИЯ ЗАПОЛНИТ МАССИВ СЛУЧАЙНЫМИ ЧИСЛАМИ    
+    return Math.round(Math.random() * n)
+}
+function getArray(count){
+    var tempArray = [];
+    for (let i = 0; i < count; i++) {
+        tempArray.push(getRandom(10));
+    }
+    return tempArray;
+}
+
+//function getRandom(n) { ЭТА ФУНКЦИЯ ЧТОБЫ ПОЛУЧАТЬ ВСЕГДА СЛУЧАЙНОЕ ЧИСЛО
+  // return Math.round(Math.random() * n) // писать return т.к. число вычислилось но никуда не возвращено
+//}
+//document.write(getRandom(100) + "<br>");
+// document.write(Math.round(Math.random() * 10) + "<br>");  //функция выбора случайного числа Math.random(); функция округления Math.round 
+
+var numbers = getArray(10); // [3,7,1,5,4,9]; так пишем чтобы заполнить массив определенными числами/ getArray(100); вот так чтобы числами от 1 до 100 
 //alert(arr);
-document.write(numbers);
+document.write(numbers + "  <<<  исходные данные<br>");
 var size = numbers.length;
-for (var current = 0; current<size; current++){ //пока current < size выполяем все действия внутри цикла
+for (var current = 0; current<size - 1; current++){ //пока current < size выполяем все действия внутри цикла
 var position = current;
-for (var i = current; i < size; i++) { //index i будет меняться ровно как меняетс current ()
+for (var i = current + 1; i < size; i++) { //index i будет меняться ровно как меняетс current ()
     if (numbers[i]>numbers[position]) {
     position = i;
     }
@@ -20,7 +37,7 @@ var temp = numbers[current]; // в темп положим рабочий эле
 numbers[current] = numbers[position]; // на позицию current положим тот что мы нашли - position
 numbers[position] = temp; // на position положить то что было в current т.е. поменять два элемента местами
 
-document.write("<br>" + numbers); // псевдопереход на новую строку
+document.write(numbers +  ` <<<  ${current + 1} повтор <br>` ); // псевдопереход на новую строку
 
 }
 
